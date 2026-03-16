@@ -1,6 +1,5 @@
 import { FileText, Download, Calendar, User, Code2 } from 'lucide-react'
 
-import CV from "../../public/Krithik_Resume(FS).pdf"
 export default function Resume() {
   return (
     <section id="resume" className="relative z-10 bg-[#020c08]">
@@ -54,7 +53,7 @@ export default function Resume() {
 
           {/* Download button */}
           <a
-            href="/Krith"
+            href="/Krithik_Resume(FS).pdf"
             download="Krithik_US_Resume.pdf"
             className="btn-fill btn-green relative z-0 w-full flex items-center justify-center gap-3 font-mono text-xs tracking-[3px] px-6 py-4 border border-green-matrix text-green-matrix no-underline transition-colors duration-300"
           >
@@ -75,6 +74,7 @@ export default function Resume() {
           <a
             href="https://www.linkedin.com/in/krithik-u-s-a545a4326/"
             className="text-blue-matrix hover:text-green-matrix transition-colors no-underline"
+             target="_blank"
           >
             LINKEDIN
           </a>

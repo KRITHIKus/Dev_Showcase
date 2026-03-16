@@ -37,7 +37,10 @@ export const skills = [
     category: "Database & Authentication",
     items: [
       { name: "MongoDB (Mongoose)", level: 85 },
-      { name: "Firebase Authentication", level: 72 },
+    { name: "MongoDB Aggregation", level: 75 },
+    { name: "MongoDB Pagination", level: 75 },
+    { name: "MongoDB Indexing", level: 70 },
+    { name: "Firebase Authentication", level: 72 },
     ],
   },
 
@@ -61,7 +64,7 @@ export const skills = [
   },
 
   {
-    category: "Python & ML",
+    category: "Other (Supporting)",
     items: [
       { name: "Python", level: 78 },
       { name: "Flask", level: 75 },
