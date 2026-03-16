@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+/* ── MATRIX CURSOR ── */
+*, *::before, *::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpolygon points='2,2 2,18 7,13 10,20 13,19 10,12 16,12' fill='%2300ff88' stroke='%23003322' stroke-width='1'/%3E%3C/svg%3E") 2 2, crosshair;
+}
+
+a, button, [role='button'] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24'%3E%3Cpolygon points='2,2 2,18 7,13 10,20 13,19 10,12 16,12' fill='%2300cfff' stroke='%23001833' stroke-width='1'/%3E%3Ccircle cx='18' cy='18' r='4' fill='%2300ff88' opacity='0.8'/%3E%3C/svg%3E") 2 2, pointer;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #020c08; }
+::-webkit-scrollbar-thumb { background: #00ff88; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #00cfff; }
+
+/* ── SELECTION ── */
+::selection { background: rgba(0,255,136,0.25); color: #00ff88; }
+
+/* ── BASE ── */
+html { scroll-behavior: smooth; }
+
+body {
+  background: #020c08;
+  color: #c8ffe8;
+  font-family: 'Rajdhani', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── SCANLINE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,255,136,0.012) 2px,
+    rgba(0,255,136,0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── GRID BG ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── REVEAL ANIMATION ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── GLITCH TEXT ── */
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #00cfff;
+  animation: glitch1 3s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 #ff0055;
+  animation: glitch2 2s infinite linear alternate-reverse;
+}
+@keyframes glitch1 {
+  0%, 85%, 100% { clip-path: none; opacity: 0; }
+  87% { clip-path: polygon(0 20%, 100% 20%, 100% 25%, 0 25%); opacity: 0.6; }
+  90% { clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%); opacity: 0.6; }
+  93% { clip-path: polygon(0 40%, 100% 40%, 100% 45%, 0 45%); opacity: 0.6; }
+}
+@keyframes glitch2 {
+  0%, 90%, 100% { clip-path: none; opacity: 0; }
+  92% { clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%); opacity: 0.5; }
+  95% { clip-path: polygon(0 10%, 100% 10%, 100% 15%, 0 15%); opacity: 0.5; }
+}
+
+/* ── MATRIX RAIN CANVAS ── */
+#matrix-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+}
+
+/* ── SKILL BAR ── */
+.skill-fill {
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── NAV ACTIVE ── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: #00ff88;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ── CARD GLOW ON HOVER ── */
+.project-card {
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0,255,136,0.5);
+  box-shadow: 0 20px 60px rgba(0,255,136,0.08), 0 0 0 1px rgba(0,255,136,0.1);
+}
+
+/* ── BTN FILL EFFECT ── */
+.btn-fill {
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+.btn-fill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+  z-index: -1;
+}
+.btn-fill:hover::before { transform: scaleX(1); }
+.btn-green::before { background: #00ff88; }
+.btn-green:hover { color: #020c08; }
+.btn-blue::before { background: #00cfff; }
+.btn-blue:hover { color: #020c08; }
