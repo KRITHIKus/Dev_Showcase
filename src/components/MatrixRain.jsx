@@ -16,7 +16,7 @@ export default function MatrixRain() {
     window.addEventListener('resize', resize)
 
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()アイウエオカキクケコ'
-    const fontSize = 13
+    const fontSize = 17
     let columns = Math.floor(canvas.width / fontSize)
     let drops = Array(columns).fill(1)
 

@@ -84,7 +84,7 @@ export const projects = [
       'A responsive multi-user blogging platform with role-based admin control and multi-authentication support including Firebase Auth, Google OAuth, and custom JWT-based login. Designed and implemented REST APIs using Node.js & Express, integrated with MongoDB for scalable data storage. Added CRUD operations, pagination, and search functionality. Deployed on Render for stable backend connectivity.',
     tags: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Firebase', 'JWT', 'Render'],
     liveUrl: 'https://a2d-blog.onrender.com/',   
-    githubUrl: '"https://github.com/KRITHIKus/mern-blog', 
+    githubUrl: "https://github.com/KRITHIKus/mern-blog", 
     highlights: [
       'Role-based admin control panel',
       'Firebase Auth + Google OAuth + JWT',
