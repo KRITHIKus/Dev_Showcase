@@ -53,7 +53,7 @@ export default function Resume() {
 
           {/* Download button */}
           <a
-            href="/KrithikUS_resume.pdf"
+            href="/KrithikUS(F)_resume.pdf"
             download="Krithik_US_Resume.pdf"
             className="btn-fill btn-green relative z-0 w-full flex items-center justify-center gap-3 font-mono text-xs tracking-[3px] px-6 py-4 border border-green-matrix text-green-matrix no-underline transition-colors duration-300"
           >
